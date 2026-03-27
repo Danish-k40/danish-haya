@@ -469,6 +469,8 @@
   padding: 5rem 1.5rem;
   text-align: center;
   background: var(--cream);
+  overflow: hidden;
+  position: relative;
 }
 
 .countdown-sparkle-icon {
@@ -489,6 +491,39 @@
   font-size: 1.5rem;
 }
 
+.cd-ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.cd-ornament-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.cd-ornament-dash {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.cd-ornament-star {
+  color: var(--gold);
+  font-size: 1.2rem;
+  animation: cd-star-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes cd-star-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+  50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+}
+
 .countdown-title {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
@@ -498,7 +533,8 @@
 }
 
 .countdown-subtitle {
-  font-size: 1.05rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
   color: var(--text-light);
   font-style: italic;
   margin-bottom: 2.5rem;
@@ -511,10 +547,10 @@
   margin-bottom: 0.5rem;
 }
 
-.scratch-wrapper {
+.ct-scratch-wrapper {
   position: relative;
-  max-width: 460px;
-  width: 90%;
+  max-width: 600px;
+  width: 95%;
   margin: 0 auto;
   border-radius: 18px;
   overflow: hidden;
@@ -532,88 +568,158 @@
   touch-action: manipulation;
 }
 
-.countdown-content {
-  padding: 1.5rem;
+.ct-content {
+  padding: 1.5rem 0.5rem;
   display: flex;
   justify-content: center;
   opacity: 0.3;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.8s ease;
 }
 
-.countdown-content.revealed {
+.ct-content.ct-revealed {
   opacity: 1;
 }
 
-.countdown-row {
+.ct-row {
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1.2rem;
 }
 
-.countdown-block {
+.ct-block {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  animation: ct-enter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes ct-enter {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ct-ring-wrapper {
   position: relative;
-  background: var(--cream-dark);
-  border: 1px solid rgba(201, 168, 76, 0.15);
-  border-radius: 10px;
-  padding: 1rem 0.8rem;
-  width: 85px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  width: 120px;
+  height: 120px;
 }
 
-.countdown-block:hover {
-  transform: translateY(-3px);
+.ct-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-.corner-bracket {
+.ct-track-outer {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.08);
+}
+
+.ct-track {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.15);
+}
+
+.ct-tick {
+  stroke: rgba(201, 168, 76, 0.18);
+  stroke-width: 0.6;
+}
+
+.ct-tick-major {
+  stroke: rgba(201, 168, 76, 0.4);
+  stroke-width: 0.9;
+}
+
+.ct-progress {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 3px rgba(201, 168, 76, 0.5));
+}
+
+.ct-glow-ring {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.1);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: blur(5px);
+}
+
+.ct-outer-spin {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.2);
+  stroke-linecap: round;
+  animation: ct-rotate-slow 20s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.ct-outer-spin.ct-spin-active {
+  stroke: rgba(201, 168, 76, 0.35);
+  animation: ct-rotate-fast 8s linear infinite;
+}
+
+@keyframes ct-rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ct-rotate-fast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ct-dot-glow {
+  animation: ct-dot-pulse 2s ease-in-out infinite;
+  transition: cx 0.6s cubic-bezier(0.4, 0, 0.2, 1), cy 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes ct-dot-pulse {
+  0%, 100% { opacity: 0.3; r: 3.5; }
+  50% { opacity: 0.7; r: 5; }
+}
+
+.ct-dot-main {
+  fill: var(--gold);
+  filter: drop-shadow(0 0 2px rgba(201, 168, 76, 0.8));
+  transition: cx 0.6s cubic-bezier(0.4, 0, 0.2, 1), cy 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ct-center {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: var(--gold);
-  border-style: solid;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
 }
 
-.corner-bracket.tl {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-}
-
-.corner-bracket.tr {
-  top: -6px;
-  right: -6px;
-  border-width: 2px 2px 0 0;
-}
-
-.corner-bracket.bl {
-  bottom: -6px;
-  left: -6px;
-  border-width: 0 0 2px 2px;
-}
-
-.corner-bracket.br {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-}
-
-.countdown-value {
+.ct-value {
   display: block;
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: var(--primary);
   line-height: 1;
-  margin-bottom: 0.15rem;
+  letter-spacing: 1px;
+  animation: ct-num-pop 0.4s ease;
 }
 
-.countdown-label {
+@keyframes ct-num-pop {
+  0% { transform: scale(1.15); opacity: 0.6; }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.ct-label {
   display: block;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.5px;
   color: var(--primary-light);
   font-weight: 600;
+  margin-top: 0.25rem;
 }
 
 /* ===================== EVENTS ===================== */
@@ -796,6 +902,59 @@
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
+/* --- Scroll animation base states --- */
+.sr-fade-up,
+.sr-fade-down,
+.sr-fade-left,
+.sr-fade-right,
+.sr-scale,
+.sr-scale-x {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.sr-fade-up { transform: translateY(35px); }
+.sr-fade-down { transform: translateY(-35px); }
+.sr-fade-left { transform: translateX(40px); }
+.sr-fade-right { transform: translateX(-40px); }
+.sr-scale { transform: scale(0.7); }
+.sr-scale-x { transform: scaleX(0); }
+
+/* --- Visible states --- */
+.sr-fade-up.sr-visible,
+.sr-fade-down.sr-visible,
+.sr-fade-left.sr-visible,
+.sr-fade-right.sr-visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.sr-scale.sr-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sr-scale-x.sr-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- Stagger delays --- */
+.sr-d1 { transition-delay: 0.05s; }
+.sr-d2 { transition-delay: 0.15s; }
+.sr-d3 { transition-delay: 0.25s; }
+.sr-d4 { transition-delay: 0.35s; }
+.sr-d5 { transition-delay: 0.45s; }
+.sr-d6 { transition-delay: 0.55s; }
+.sr-d7 { transition-delay: 0.65s; }
+.sr-d8 { transition-delay: 0.75s; }
+.sr-d9 { transition-delay: 0.85s; }
+.sr-d10 { transition-delay: 0.95s; }
+.sr-d11 { transition-delay: 1.05s; }
+
 /* ===================== QURAN VERSE ===================== */
 .quran-section {
   padding: 4rem 1.5rem;
@@ -959,58 +1118,35 @@
     font-size: 1.2rem;
   }
 
-  .scratch-wrapper {
-    width: 95%;
-    max-width: 360px;
+  .ct-scratch-wrapper {
+    width: 100%;
+    max-width: 100%;
   }
 
-  .countdown-content {
-    padding: 1.2rem 0.8rem;
+  .ct-content {
+    padding: 0.8rem 0;
   }
 
-  .countdown-row {
-    gap: 0.5rem;
+  .ct-row {
+    gap: 0.3rem;
   }
 
-  .countdown-block {
-    flex: 1;
-    min-width: 0;
-    width: auto;
-    padding: 0.8rem 0.3rem;
+  .ct-ring-wrapper {
+    width: 78px;
+    height: 78px;
   }
 
-  .corner-bracket {
-    width: 10px;
-    height: 10px;
+  .ct-value {
+    font-size: 1.15rem;
   }
 
-  .corner-bracket.tl {
-    top: 4px;
-    left: 4px;
+  .ct-label {
+    font-size: 0.38rem;
+    letter-spacing: 1.5px;
   }
 
-  .corner-bracket.tr {
-    top: 4px;
-    right: 4px;
-  }
-
-  .corner-bracket.bl {
-    bottom: 4px;
-    left: 4px;
-  }
-
-  .corner-bracket.br {
-    bottom: 4px;
-    right: 4px;
-  }
-
-  .countdown-value {
-    font-size: 1.4rem;
-  }
-
-  .countdown-label {
-    font-size: 0.5rem;
-    letter-spacing: 1px;
+  .countdown-section {
+    padding: 3.5rem 0.5rem;
   }
 
   .event-card {
@@ -1054,21 +1190,25 @@
     font-size: 4.5rem;
   }
 
-  .scratch-wrapper {
-    max-width: 460px;
+  .ct-scratch-wrapper {
+    max-width: 680px;
   }
 
-  .countdown-block {
-    width: 95px;
-    padding: 1.2rem 1rem;
+  .ct-row {
+    gap: 2rem;
   }
 
-  .countdown-value {
-    font-size: 2.2rem;
+  .ct-ring-wrapper {
+    width: 140px;
+    height: 140px;
   }
 
-  .countdown-label {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
+  .ct-value {
+    font-size: 2.4rem;
+  }
+
+  .ct-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
   }
 }
