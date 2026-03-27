@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a3a2a"/>
+  <rect x="40" y="40" width="1120" height="550" rx="8" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
+
+  <text x="600" y="200" font-family="Georgia, serif" font-size="80" fill="#c9a84c" text-anchor="middle" font-weight="bold">D e H</text>
+
+  <line x1="400" y1="240" x2="800" y2="240" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+
+  <text x="600" y="310" font-family="Georgia, serif" font-size="52" fill="#ffffff" text-anchor="middle">Danish</text>
+  <text x="600" y="370" font-family="Georgia, serif" font-size="28" fill="#c9a84c" text-anchor="middle">&amp;</text>
+  <text x="600" y="420" font-family="Georgia, serif" font-size="52" fill="#ffffff" text-anchor="middle">Haya Faisal</text>
+
+  <text x="600" y="500" font-family="Georgia, serif" font-size="20" fill="#c9a84c" text-anchor="middle" letter-spacing="4">NIKAH INVITATION</text>
+
+  <text x="600" y="545" font-family="Georgia, serif" font-size="18" fill="#ffffff" text-anchor="middle" opacity="0.6">9th May 2026</text>
+</svg>

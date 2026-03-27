@@ -8,6 +8,12 @@ export default function HeroSection() {
       <div className={`hero-content ${visible ? 'reveal' : 'hidden-section'}`}>
         <p className="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
 
+        <div className="hero-monogram">
+          <span>D</span>
+          <span className="hero-mono-heart">♥</span>
+          <span>H</span>
+        </div>
+
         <p className="invite-label">Nikah Invitation</p>
 
         <div className="diamond-ornament">✦✦</div>
