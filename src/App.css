@@ -613,7 +613,7 @@
 
 .ct-track-outer {
   fill: none;
-  stroke: rgba(201, 168, 76, 0.08);
+  stroke: rgba(201, 168, 76, 0.2);
 }
 
 .ct-track {
@@ -622,13 +622,13 @@
 }
 
 .ct-tick {
-  stroke: rgba(201, 168, 76, 0.18);
-  stroke-width: 0.6;
+  stroke: rgba(201, 168, 76, 0.35);
+  stroke-width: 0.8;
 }
 
 .ct-tick-major {
-  stroke: rgba(201, 168, 76, 0.4);
-  stroke-width: 0.9;
+  stroke: rgba(201, 168, 76, 0.65);
+  stroke-width: 1.2;
 }
 
 .ct-progress {
@@ -648,14 +648,14 @@
 
 .ct-outer-spin {
   fill: none;
-  stroke: rgba(201, 168, 76, 0.2);
+  stroke: rgba(201, 168, 76, 0.35);
   stroke-linecap: round;
   animation: ct-rotate-slow 20s linear infinite;
   transform-origin: 50% 50%;
 }
 
 .ct-outer-spin.ct-spin-active {
-  stroke: rgba(201, 168, 76, 0.35);
+  stroke: rgba(201, 168, 76, 0.5);
   animation: ct-rotate-fast 8s linear infinite;
 }
 

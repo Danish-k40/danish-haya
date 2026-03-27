@@ -15,8 +15,8 @@ function getTimeLeft() {
 }
 
 function CircleTimer({ value, label, max, delay, isSeconds }) {
-  const radius = 46
-  const outerRadius = 52
+  const radius = 42
+  const outerRadius = 47
   const circumference = 2 * Math.PI * radius
   const outerCircumference = 2 * Math.PI * outerRadius
   const progress = (value / max) * circumference
@@ -29,7 +29,7 @@ function CircleTimer({ value, label, max, delay, isSeconds }) {
   return (
     <div className="ct-block" style={{ animationDelay: `${delay}ms` }}>
       <div className="ct-ring-wrapper">
-        <svg className="ct-svg" viewBox="0 0 100 100">
+        <svg className="ct-svg" viewBox="0 0 100 100" overflow="visible">
           <defs>
             <linearGradient id={`grad-${label}`} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#d4a843" />
